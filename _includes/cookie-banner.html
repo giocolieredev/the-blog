@@ -1,0 +1,31 @@
+<div id="cookie-banner" role="dialog" aria-modal="true" aria-live="polite">
+  <div class="cookie-text">
+    <strong>🍪 Cookie Notice</strong> — This site uses minimal cookies for analytics and preferences.
+    No tracking or ad cookies. You can accept or decline.
+  </div>
+  <div class="cookie-btns">
+    <button class="cookie-btn reject" onclick="cookieDecline()">DECLINE</button>
+    <button class="cookie-btn accept" onclick="cookieAccept()">ACCEPT</button>
+  </div>
+</div>
+<script>
+  function initCookie() {
+    var consent = localStorage.getItem('crii_cookie');
+    if (!consent) {
+      setTimeout(function () {
+        var banner = document.getElementById('cookie-banner');
+        if (banner) banner.classList.add('visible');
+      }, 1200);
+    }
+  }
+  function cookieAccept() { localStorage.setItem('crii_cookie', 'accepted'); dismissCookie(); }
+  function cookieDecline() { localStorage.setItem('crii_cookie', 'declined'); dismissCookie(); }
+  function dismissCookie() {
+    var banner = document.getElementById('cookie-banner');
+    if (banner) {
+      banner.style.transform = 'translateY(100%)';
+      setTimeout(function () { banner.classList.add('hidden'); }, 500);
+    }
+  }
+  document.addEventListener('DOMContentLoaded', initCookie);
+</script>

@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>404 — crii.me blog</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+  <style>
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      border-radius: 0 !important;
+    }
+
+    :root {
+      --orange: #FF6B00;
+      --black: #0A0A0A;
+      --white: #FAFAFA;
+      --gray-200: #D8D6D2;
+      --gray-400: #9A9890;
+      --gray-600: #5A5855;
+    }
+
+    html,
+    body {
+      height: 100%;
+    }
+
+    body {
+      font-family: 'Space Mono', monospace;
+      background: var(--black);
+      color: var(--white);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      padding: 40px 24px;
+      text-align: center;
+      overflow: hidden;
+    }
+
+    .bg-num {
+      position: fixed;
+      font-size: clamp(14rem, 45vw, 28rem);
+      font-weight: 700;
+      color: rgba(255, 107, 0, 0.06);
+      line-height: 1;
+      user-select: none;
+      letter-spacing: -0.05em;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 0;
+    }
+
+    .content {
+      position: relative;
+      z-index: 1;
+    }
+
+    .err-num {
+      font-size: clamp(6rem, 22vw, 13rem);
+      font-weight: 700;
+      color: var(--orange);
+      letter-spacing: -0.05em;
+      line-height: 1;
+      animation: glitch 3s infinite;
+    }
+
+    @keyframes glitch {
+
+      0%,
+      95%,
+      100% {
+        text-shadow: none
+      }
+
+      96% {
+        text-shadow: 4px 0 var(--white), -4px 0 var(--orange)
+      }
+
+      97% {
+        text-shadow: -4px 0 var(--white), 4px 0 var(--orange)
+      }
+
+      98% {
+        text-shadow: 4px 0 var(--orange), -4px 0 var(--white)
+      }
+    }
+
+    .border-line {
+      width: 100%;
+      max-width: 480px;
+      height: 3px;
+      background: var(--orange);
+      margin: 20px auto;
+    }
+
+    .err-msg {
+      font-size: clamp(1rem, 4vw, 1.5rem);
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      margin-bottom: 12px;
+    }
+
+    .err-sub {
+      font-size: 0.82rem;
+      color: var(--gray-400);
+      max-width: 380px;
+      margin: 0 auto 32px;
+      line-height: 1.7;
+    }
+
+    .err-home {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      border: 3px solid var(--orange);
+      background: var(--orange);
+      color: var(--black);
+      font-family: 'Space Mono', monospace;
+      font-size: 0.85rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      padding: 12px 24px;
+      text-decoration: none;
+      transition: background 0.15s, color 0.15s;
+    }
+
+    .err-home:hover {
+      background: var(--black);
+      color: var(--orange);
+    }
+
+    .err-alt {
+      display: block;
+      margin-top: 18px;
+      font-size: 0.75rem;
+      color: var(--gray-600);
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+
+    .err-alt:hover {
+      color: var(--orange);
+    }
+
+    .scanlines {
+      pointer-events: none;
+      position: fixed;
+      inset: 0;
+      z-index: 99;
+      background: repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(255, 255, 255, 0.012) 2px, rgba(255, 255, 255, 0.012) 4px);
+    }
+  </style>
+</head>
+
+<body>
+  <div class="scanlines" aria-hidden="true"></div>
+  <div class="bg-num" aria-hidden="true">404</div>
+  <div class="content">
+    <div class="err-num">404</div>
+    <div class="border-line"></div>
+    <p class="err-msg">PAGE NOT FOUND</p>
+    <p class="err-sub">This post doesn't exist on the blog. It may have moved, been deleted, or never existed.</p>
+    <a class="err-home" href="/"><i class="fa-solid fa-arrow-left"></i> BACK TO BLOG</a>
+    <a class="err-alt" href="https://crii.me/">← or back to crii.me</a>
+  </div>
+</body>
+
+</html>

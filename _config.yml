@@ -1,0 +1,48 @@
+# ══════════════════════════════════════════
+# blog.crii.me — Jekyll configuration
+# Standalone blog on GitHub Pages (Jekyll builds automatically).
+# Repo: giocoliere/the-blog
+# ══════════════════════════════════════════
+
+title: crii.me blog
+email: hello@crii.me
+description: >-
+  The blog of Cri — developer, artist and musician. Short posts on code,
+  creativity, music and experiments. No spam, ever.
+url: "https://blog.crii.me"
+baseurl: ""
+lang: en
+
+# ── Author / social (used by jekyll-seo-tag) ──
+author:
+  name: Cri
+  twitter: criime
+
+social:
+  name: Cri
+  links:
+    - https://github.com/giocoliere
+    - https://x.com/giocolieredev
+    - https://instagram.com/crii.mp3
+    - https://soundcloud.com/giocoliere
+
+twitter:
+  username: criime
+
+# ── Build settings ──
+# /blog/:title/ keeps old crii.me/blog/<slug> URLs working here.
+markdown: kramdown
+permalink: /blog/:title/
+
+plugins:
+  - jekyll-feed
+  - jekyll-seo-tag
+  - jekyll-sitemap
+
+# ── Defaults ──
+defaults:
+  - scope:
+      path: ""
+      type: posts
+    values:
+      layout: post
