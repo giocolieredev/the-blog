@@ -18,6 +18,9 @@ Both sites are published from the **giocolieredev** GitHub account.
 
 `crii.me/blog/` on the main site redirects here.
 
+> 📖 Step-by-step tutorial (first publish, writing posts, DNS, troubleshooting):
+> see the `TUTORIAL.md` file in the main website folder (sibling of this repo).
+
 ## Local development
 
 Requires Ruby + Jekyll (see [jekyllrb.com](https://jekyllrb.com/docs/)):
