@@ -108,6 +108,20 @@ ul, ol { padding-left: 1.4em; }
 .nav-tab:hover { background: var(--gray-800); color: var(--white); }
 .nav-tab.active { background: var(--orange); color: var(--black); }
 
+.nav-tab .wip-badge {
+  font-size: 0.55rem;
+  background: var(--orange);
+  color: var(--black);
+  padding: 1px 4px;
+  font-weight: 900;
+  vertical-align: super;
+  margin-left: 3px;
+}
+.nav-tab.active .wip-badge {
+  background: var(--black);
+  color: var(--orange);
+}
+
 /* ══════════════════════════════════════════
    LAYOUT
    ══════════════════════════════════════════ */
