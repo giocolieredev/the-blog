@@ -39,6 +39,10 @@ plugins:
   - jekyll-seo-tag
   - jekyll-sitemap
 
+# ── Keep build helpers out of the built site ──
+exclude:
+  - README.md
+
 # ── Defaults ──
 defaults:
   - scope:
