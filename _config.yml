@@ -28,6 +28,11 @@ social:
 
 twitter:
   username: criime
+  card: summary_large_image
+
+# ── Default OG image for social previews ──
+seo:
+  image: https://crii.me/og-image.png
 
 # ── Build settings ──
 # /blog/:title/ keeps old crii.me/blog/<slug> URLs working here.

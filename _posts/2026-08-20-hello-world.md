@@ -1,9 +1,10 @@
 ---
 layout: post
 title: "Hello, World — welcome to the crii.me blog"
-description: "The first post on the crii.me blog: what to expect from these articles."
+description: "The first post on the crii.me blog: what to expect from these articles — dev notes, creative logs and experiments."
 date: 2026-08-20 12:00:00 +0000
 tags: [meta, welcome]
+image: https://crii.me/og-image.png
 ---
 
 Welcome to the blog. This is where I'll write about code, creativity, music,
