@@ -9,10 +9,12 @@ Same brutalist look and feel as the main site: orange/black theme, Space Grotesk
 
 ## Repos
 
-| Site         | Repo               | URL                      |
-| ------------ | ------------------ | ------------------------ |
-| Main website | `giocoliere/crii.me` | https://crii.me          |
-| Blog         | `giocoliere/the-blog` | https://blog.crii.me     |
+Both sites are published from the **giocolieredev** GitHub account.
+
+| Site         | Repo                      | URL                  |
+| ------------ | ------------------------- | -------------------- |
+| Main website | published from `giocolieredev` | https://crii.me  |
+| Blog         | `giocolieredev/the-blog`  | https://blog.crii.me |
 
 `crii.me/blog/` on the main site redirects here.
 
@@ -43,18 +45,31 @@ tags: [dev, meta]
 Content here. Use `<!--more-->` to cut the excerpt shown on the index.
 ```
 
+## Publishing to GitHub
+
+Create/push the repo from the `giocolieredev` account:
+
+```bash
+gh repo create the-blog --public --source . --push
+```
+
+(or `git remote add origin git@github.com:giocolieredev/the-blog.git && git push -u origin main`)
+
 Push to `main` and GitHub Pages rebuilds automatically (takes ~1 minute).
 
 ## DNS & custom domain
 
 `blog.crii.me` is a subdomain of `crii.me` (already verified on GitHub Pages),
-so it just needs one DNS record at your registrar/DNS provider:
+so it just needs one DNS record at your registrar/DNS provider (Namecheap):
 
 ```
 Type:  CNAME
 Name:  blog
-Value: giocoliere.github.io
+Value: giocolieredev.github.io
 ```
+
+(The CNAME target must be `<username>.github.io` of the account that hosts the
+Pages site — here that's `giocolieredev`.)
 
 (Or four A records pointing to `185.199.108.153`, `185.199.109.153`,
 `185.199.110.153`, `185.199.111.153`.)
