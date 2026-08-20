@@ -31,6 +31,18 @@ html {
   font-size: 16px;
 }
 
+/* Readable text selection on light & dark sections */
+::selection {
+  background: #FFE3C2;
+  color: #0A0A0A !important;
+  text-shadow: none !important;
+}
+::-moz-selection {
+  background: #FFE3C2;
+  color: #0A0A0A !important;
+  text-shadow: none !important;
+}
+
 body {
   font-family: var(--font-head);
   background: var(--white);
