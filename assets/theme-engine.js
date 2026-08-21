@@ -18,8 +18,6 @@
         { id: 'midnight', name: 'MIDNIGHT', accent: '#1E293B', avatar: 'assets/pfp.png' }
       ];
 
-      var AVATARS = ['assets/pfp.png', 'assets/pfp2.jpe'];
-
       var FONTS = [
         { id: '', name: 'GROTESK' },
         { id: 'mono', name: 'MONO' },
@@ -200,37 +198,6 @@
         pg.appendChild(pw);
         panel.appendChild(pg);
 
-        // Avatar
-        var ag = document.createElement('div');
-        ag.className = 'theme-group';
-        var al = document.createElement('div');
-        al.className = 'theme-group-label';
-        al.textContent = 'PROFILE PICTURE';
-        ag.appendChild(al);
-        var preview = document.createElement('div');
-        preview.className = 'theme-avatar-preview';
-        var pimg = document.createElement('img');
-        pimg.src = state.avatar;
-        pimg.alt = 'Profile picture preview';
-        var pname = document.createElement('span');
-        pname.id = 'theme-avatar-name';
-        pname.textContent = state.avatar.replace('assets/', '');
-        preview.appendChild(pimg);
-        preview.appendChild(pname);
-        ag.appendChild(preview);
-        var aw = document.createElement('div');
-        aw.className = 'theme-chips';
-        AVATARS.forEach(function (a) {
-          var c = chip(a.replace('assets/', '').toUpperCase(), a, state.avatar === a, 'AVATAR');
-          c.onclick = function () {
-            set({ avatar: a });
-            localStorage.setItem(THEME_KEY + '_avatar_override', '1');
-          };
-          aw.appendChild(c);
-        });
-        ag.appendChild(aw);
-        panel.appendChild(ag);
-
         // Accent color
         var cg = document.createElement('div');
         cg.className = 'theme-group';
@@ -303,21 +270,11 @@
           c.classList.toggle('active', c.dataset.val === state.grid);
         });
 
-        // Avatar chips
-        panel.querySelectorAll('.theme-chip[data-group="AVATAR"]').forEach(function (c) {
-          c.classList.toggle('active', c.dataset.val === state.avatar);
-        });
-
         // Accent swatches
         panel.querySelectorAll('.theme-swatch').forEach(function (s) {
           s.classList.toggle('active', s.dataset.val.toLowerCase() === state.accent.toLowerCase());
         });
 
-        // Avatar preview
-        var pimg = panel.querySelector('.theme-avatar-preview img');
-        if (pimg) pimg.src = state.avatar;
-        var pname = document.getElementById('theme-avatar-name');
-        if (pname) pname.textContent = state.avatar.replace('assets/', '');
       }
 
       function toggle() {
