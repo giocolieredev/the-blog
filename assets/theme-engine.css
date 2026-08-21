@@ -1,0 +1,323 @@
+    /* ═══════════════════════════════════════════════
+       THEME ENGINE — styles, brutalist modes, grids
+    ═══════════════════════════════════════════════ */
+    /* Readable text selection everywhere (light & dark sections),
+       overriding browser/system defaults that make selected text
+       unreadable on dark surfaces. */
+    ::selection {
+      background: var(--selection-bg, #FFE3C2);
+      color: #0A0A0A !important;
+      text-shadow: none !important;
+    }
+    ::-moz-selection {
+      background: var(--selection-bg, #FFE3C2);
+      color: #0A0A0A !important;
+      text-shadow: none !important;
+    }
+
+    :root {
+      --theme-accent: var(--orange);
+      --theme-accent-d: var(--orange-d);
+      --theme-accent-l: var(--orange-l);
+      --theme-radius: 0px;
+      --theme-shadow: none;
+      --theme-grid: none;
+      --theme-bg: var(--white);
+    }
+
+    /* ── Brutalism modes ── */
+    html[data-theme-mode="rounded"] {
+      --theme-radius: 14px;
+    }
+    html[data-theme-mode="soft"] {
+      --theme-radius: 22px;
+    }
+    html[data-theme-mode="shadow"] {
+      --theme-radius: 10px;
+      --theme-shadow: 6px 6px 0 var(--theme-accent);
+    }
+    html[data-theme-mode="glow"] {
+      --theme-radius: 8px;
+      --theme-shadow: 0 0 18px var(--theme-accent);
+    }
+    html[data-theme-mode="neon"] {
+      --theme-radius: 4px;
+      --theme-shadow: 3px 3px 0 var(--theme-accent), -3px -3px 0 var(--theme-accent-d);
+    }
+
+    /* ── Grids ── */
+    html[data-theme-grid="subtle"] {
+      --theme-grid:
+        linear-gradient(to right, rgba(0, 0, 0, 0.05) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(0, 0, 0, 0.05) 1px, transparent 1px);
+      --theme-grid-size: 32px;
+    }
+    html[data-theme-grid="strong"] {
+      --theme-grid:
+        linear-gradient(to right, rgba(0, 0, 0, 0.10) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(0, 0, 0, 0.10) 1px, transparent 1px);
+      --theme-grid-size: 22px;
+    }
+    html[data-theme-grid="dotted"] {
+      --theme-grid: radial-gradient(circle, rgba(0, 0, 0, 0.16) 1px, transparent 1px);
+      --theme-grid-size: 18px;
+    }
+    html[data-theme-grid="lines"] {
+      --theme-grid: repeating-linear-gradient(to bottom, rgba(0, 0, 0, 0.06) 0 1px, transparent 1px 8px);
+      --theme-grid-size: 8px;
+    }
+    body {
+      background-color: var(--theme-bg);
+      background-image: var(--theme-grid);
+      background-size: var(--theme-grid-size, 32px) var(--theme-grid-size, 32px);
+    }
+
+    /* ── Apply theme accent (decorative only) ──
+       The accent colors the active tab, WIP badges, orange text and
+       link hover text. Buttons (project-link, contact, cookie, link-btn)
+       keep their base orange + black text so they stay readable with
+       any accent, including dark ones. */
+    html[data-theme-accent] .orange,
+    html[data-theme-accent] a:hover,
+    html[data-theme-accent] .nav-tab.active .wip-badge,
+    html[data-theme-accent] .drawer-tab.active .wip-badge { color: var(--theme-accent); }
+    html[data-theme-accent] .nav-tab.active,
+    html[data-theme-accent] .drawer-tab.active,
+    html[data-theme-accent] .burger-btn:hover,
+    html[data-theme-accent] .wip-badge,
+    html[data-theme-accent] .err-home:hover { background: var(--theme-accent); }
+    /* All nav tabs (buttons and links alike) get accent-colored hover text,
+       matching the grey -> accent color change instead of a filled block. */
+    html[data-theme-accent] .nav-tab:hover,
+    html[data-theme-accent] .drawer-tab:hover,
+    html[data-theme-accent] .nav-logo:hover { color: var(--theme-accent); }
+    html[data-theme-accent] .link-btn.accent {
+      background: var(--theme-accent);
+      color: var(--black);
+      border-color: var(--theme-accent);
+    }
+    html[data-theme-accent] .link-btn.accent:hover {
+      background: var(--black);
+      color: var(--theme-accent-l);
+      border-color: var(--black);
+    }
+    /* Link hover text on dark backgrounds uses the light accent variant */
+    html[data-theme-accent] .link-btn:hover,
+    html[data-theme-accent] .cookie-btn.accept:hover {
+      color: var(--theme-accent-l);
+    }
+
+    /* ── Radius / shadow application ── */
+    html[data-theme-mode] *,
+    html[data-theme-mode] *::before,
+    html[data-theme-mode] *::after {
+      border-radius: var(--theme-radius) !important;
+    }
+    html[data-theme-mode] .card,
+    html[data-theme-mode] .project-card,
+    html[data-theme-mode] .modal-content,
+    html[data-theme-mode] .contact-modal-content,
+    html[data-theme-mode] .cookie-banner,
+    html[data-theme-mode] .nav-logo,
+    html[data-theme-mode] .avatar,
+    html[data-theme-mode] .stat-box,
+    html[data-theme-mode] .footer-inner,
+    html[data-theme-mode] .btn-primary,
+    html[data-theme-mode] .btn-ghost,
+    html[data-theme-mode] .spotify-panel,
+    html[data-theme-mode] .mobile-drawer .drawer-content,
+    html[data-theme-mode] .site-nav {
+      box-shadow: var(--theme-shadow);
+    }
+
+    /* ── Fonts ── */
+    html[data-theme-font="serif"] body,
+    html[data-theme-font="serif"] button,
+    html[data-theme-font="serif"] input,
+    html[data-theme-font="serif"] textarea {
+      font-family: 'Playfair Display', Georgia, serif;
+    }
+    html[data-theme-font="serif"] .nav-logo,
+    html[data-theme-font="serif"] h1,
+    html[data-theme-font="serif"] h2,
+    html[data-theme-font="serif"] h3 {
+      font-family: 'Playfair Display', Georgia, serif;
+    }
+    html[data-theme-font="mono"] body,
+    html[data-theme-font="mono"] button,
+    html[data-theme-font="mono"] input,
+    html[data-theme-font="mono"] textarea {
+      font-family: 'Space Mono', monospace;
+    }
+    html[data-theme-font="round"] body,
+    html[data-theme-font="round"] button,
+    html[data-theme-font="round"] input,
+    html[data-theme-font="round"] textarea {
+      font-family: 'Nunito', sans-serif;
+    }
+
+    /* ── Theme engine panel ── */
+    .theme-fab {
+      position: fixed;
+      right: 18px;
+      bottom: 18px;
+      z-index: 9999;
+      width: 50px;
+      height: 50px;
+      border: 3px solid var(--black);
+      background: var(--theme-accent);
+      color: var(--black);
+      font-size: 1.25rem;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      box-shadow: 4px 4px 0 var(--black);
+      transition: transform 0.2s, background var(--speed);
+    }
+    .theme-fab:hover { transform: translate(-2px, -2px); box-shadow: 6px 6px 0 var(--black); }
+
+    .theme-panel {
+      position: fixed;
+      right: -420px;
+      top: 0;
+      bottom: 0;
+      width: 400px;
+      max-width: 92vw;
+      background: var(--black);
+      color: var(--white);
+      border-left: 3px solid var(--theme-accent);
+      z-index: 10000;
+      transition: right 0.3s ease;
+      overflow-y: auto;
+      padding: 22px;
+      font-family: 'Space Grotesk', sans-serif;
+    }
+    .theme-panel.open { right: 0; }
+    .theme-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.5);
+      z-index: 9999;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s;
+    }
+    .theme-overlay.open { opacity: 1; pointer-events: auto; }
+
+    .theme-panel-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 18px;
+    }
+    .theme-panel-title { font-weight: 700; font-size: 1.1rem; letter-spacing: 1px; }
+    .theme-panel-title span { color: var(--theme-accent); }
+    .theme-close {
+      background: none;
+      border: none;
+      color: var(--white);
+      font-size: 1.3rem;
+      cursor: pointer;
+    }
+    .theme-close:hover { color: var(--theme-accent); }
+
+    .theme-group { margin-bottom: 20px; }
+    .theme-group-label {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.72rem;
+      letter-spacing: 1.5px;
+      color: var(--theme-accent);
+      margin-bottom: 10px;
+      text-transform: uppercase;
+    }
+
+    .theme-chips { display: flex; flex-wrap: wrap; gap: 8px; }
+    .theme-chip {
+      border: 2px solid var(--gray-600);
+      background: var(--gray-800);
+      color: var(--white);
+      padding: 7px 13px;
+      font-size: 0.8rem;
+      font-family: 'Space Mono', monospace;
+      cursor: pointer;
+      transition: all var(--speed);
+      text-transform: uppercase;
+    }
+    .theme-chip:hover { border-color: var(--theme-accent); }
+    .theme-chip.active {
+      background: var(--theme-accent);
+      border-color: var(--theme-accent);
+      color: var(--black);
+      font-weight: 700;
+    }
+
+    .theme-swatches { display: flex; flex-wrap: wrap; gap: 10px; }
+    .theme-swatch {
+      width: 40px;
+      height: 40px;
+      border: 3px solid var(--gray-600);
+      cursor: pointer;
+      position: relative;
+      transition: transform var(--speed);
+    }
+    .theme-swatch:hover { transform: scale(1.12); }
+    .theme-swatch.active { border-color: var(--white); outline: 2px solid var(--theme-accent); }
+    .theme-swatch .swatch-check {
+      position: absolute;
+      inset: 0;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      font-size: 1rem;
+      text-shadow: 0 0 3px #000;
+    }
+    .theme-swatch.active .swatch-check { display: flex; }
+
+    .theme-row { display: flex; align-items: center; gap: 10px; margin-bottom: 6px; }
+    .theme-row input[type="color"] {
+      width: 44px;
+      height: 34px;
+      border: 2px solid var(--gray-600);
+      background: none;
+      cursor: pointer;
+      padding: 0;
+    }
+    .theme-reset {
+      background: none;
+      border: 2px solid var(--gray-600);
+      color: var(--white);
+      padding: 9px 16px;
+      font-family: 'Space Mono', monospace;
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      cursor: pointer;
+      width: 100%;
+      margin-top: 6px;
+      transition: all var(--speed);
+    }
+    .theme-reset:hover { border-color: var(--theme-accent); color: var(--theme-accent); }
+
+    .theme-avatar-preview {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 12px;
+    }
+    .theme-avatar-preview img {
+      width: 56px;
+      height: 56px;
+      object-fit: cover;
+      border: 3px solid var(--theme-accent);
+      box-shadow: 3px 3px 0 var(--black);
+    }
+    .theme-avatar-preview span {
+      font-size: 0.8rem;
+      color: var(--gray-400);
+      font-family: 'Space Mono', monospace;
+    }
+
+    @media (max-width: 560px) {
+      .theme-panel { width: 100%; max-width: 100%; }
+    }

@@ -45,7 +45,7 @@ html {
 
 body {
   font-family: var(--font-head);
-  background: var(--white);
+  background-color: var(--white);
   color: var(--black);
   line-height: 1.7;
   overflow-x: hidden;
@@ -390,6 +390,83 @@ ul, ol { padding-left: 1.4em; }
   transition: background var(--speed), color var(--speed);
 }
 .post-back a:hover { background: var(--black); color: var(--orange); }
+
+/* ══════════════════════════════════════════
+   SHARE BAR & QR
+   ══════════════════════════════════════════ */
+.share-bar {
+  margin-top: 40px;
+  padding-top: 20px;
+  border-top: var(--border);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+}
+
+.share-label {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--gray-400);
+  margin-right: 8px;
+}
+
+.share-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  border: var(--border-sm);
+  background: var(--white);
+  color: var(--gray-600);
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background var(--speed), color var(--speed), border-color var(--speed), transform var(--speed);
+}
+
+.share-link:hover {
+  background: var(--orange);
+  color: var(--black);
+  border-color: var(--orange);
+  transform: translateY(-2px);
+}
+
+.share-qr {
+  margin-top: 16px;
+  display: inline-block;
+  border: var(--border);
+  background: var(--white);
+  padding: 16px;
+  box-shadow: -6px 6px 0 var(--black);
+}
+
+.share-qr[hidden] { display: none; }
+
+.share-qr #qr-code {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.share-qr #qr-code canvas,
+.share-qr #qr-code img {
+  border: var(--border-sm);
+  border-color: var(--gray-800);
+}
+
+.share-qr-note {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--gray-400);
+  margin-top: 10px;
+  text-align: center;
+}
 
 /* ══════════════════════════════════════════
    NEWSLETTER
