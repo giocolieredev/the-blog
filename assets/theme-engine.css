@@ -98,9 +98,10 @@
       color: var(--theme-accent-l);
       border-color: var(--black);
     }
-    /* Link hover text on dark backgrounds uses the light accent variant */
-    html[data-theme-accent] .link-btn:hover,
-    html[data-theme-accent] .cookie-btn.accept:hover {
+    /* Link buttons keep light-accent text on their dark hover fill; the
+       cookie accept button keeps its black text on the lightened fill so
+       it never becomes orange-on-orange. */
+    html[data-theme-accent] .link-btn:hover {
       color: var(--theme-accent-l);
     }
 
