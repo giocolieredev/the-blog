@@ -74,18 +74,15 @@
 
     /* ── Apply theme accent (decorative only) ──
        The accent colors the active tab, WIP badges, orange text and
-       link hover text. Buttons (project-link, contact, cookie, link-btn)
-       keep their base orange + black text so they stay readable with
-       any accent, including dark ones. */
+       nav hover text. Buttons and links keep their own page-defined
+       hover styles (orange fill + black text, or black fill + orange
+       text) so text and icons never disappear on hover. */
     html[data-theme-accent] .orange,
-    html[data-theme-accent] a:hover,
     html[data-theme-accent] .nav-tab.active .wip-badge,
     html[data-theme-accent] .drawer-tab.active .wip-badge { color: var(--theme-accent); }
     html[data-theme-accent] .nav-tab.active,
     html[data-theme-accent] .drawer-tab.active,
-    html[data-theme-accent] .burger-btn:hover,
-    html[data-theme-accent] .wip-badge,
-    html[data-theme-accent] .err-home:hover { background: var(--theme-accent); }
+    html[data-theme-accent] .wip-badge { background: var(--theme-accent); }
     /* All nav tabs (buttons and links alike) get accent-colored hover text,
        matching the grey -> accent color change instead of a filled block. */
     html[data-theme-accent] .nav-tab:hover,
