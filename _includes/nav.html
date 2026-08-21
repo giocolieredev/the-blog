@@ -1,3 +1,12 @@
+<!-- ═══════════════════════════════════════════
+   MARQUEE TICKER (same as crii.me)
+═══════════════════════════════════════════ -->
+<div class="marquee-wrap" aria-hidden="true">
+  <div class="marquee-inner" id="marquee-inner">
+    <!-- Filled by JS -->
+  </div>
+</div>
+
 <nav class="site-nav" role="navigation" aria-label="Main navigation">
   <a href="https://crii.me/" class="nav-logo">crii.me</a>
   <div class="nav-tabs">
@@ -11,3 +20,19 @@
     <a href="https://crii.me/discord.html" class="nav-tab">DISCORD</a>
   </div>
 </nav>
+
+<script>
+  /* Marquee ticker — same items and icons as crii.me */
+  (function () {
+    var items = ['DEVELOPER', 'ARTIST', 'BUILDER', 'MUSICIAN', 'DESIGNER', 'TINKERER', 'crii.me'];
+    var icons = ['fa-code', 'fa-palette', 'fa-hammer', 'fa-music', 'fa-pen-nib', 'fa-flask', 'fa-star'];
+    var html = '';
+    for (var r = 0; r < 3; r++) {
+      items.forEach(function (item, i) {
+        html += '<span><i class="fa-solid ' + icons[i % icons.length] + '"></i>' + item + '</span>';
+      });
+    }
+    var inner = document.getElementById('marquee-inner');
+    if (inner) inner.innerHTML = html + html; // double for seamless loop
+  })();
+</script>

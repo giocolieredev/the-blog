@@ -70,6 +70,44 @@ ul, ol { padding-left: 1.4em; }
 }
 
 /* ══════════════════════════════════════════
+   MARQUEE TICKER (same as crii.me)
+   ══════════════════════════════════════════ */
+.marquee-wrap {
+  background: var(--black);
+  color: var(--orange);
+  overflow: hidden;
+  border-top: var(--border);
+  border-bottom: var(--border);
+  padding: 10px 0;
+  white-space: nowrap;
+  position: relative;
+}
+
+.marquee-inner {
+  display: inline-block;
+  animation: marquee 22s linear infinite;
+}
+
+.marquee-inner span {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 0 2rem;
+}
+
+.marquee-inner span i {
+  color: var(--orange-l);
+  margin-right: 6px;
+}
+
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+/* ══════════════════════════════════════════
    NAV
    ══════════════════════════════════════════ */
 .site-nav {
@@ -101,7 +139,7 @@ ul, ol { padding-left: 1.4em; }
   text-transform: uppercase;
   transition: background var(--speed), color var(--speed);
 }
-.nav-logo:hover { background: var(--orange); color: var(--black); }
+.nav-logo:hover { background: var(--gray-800); color: var(--orange); }
 
 .nav-tabs { display: flex; align-items: stretch; flex: 1; }
 
@@ -121,7 +159,7 @@ ul, ol { padding-left: 1.4em; }
   align-items: center;
   transition: background var(--speed), color var(--speed);
 }
-.nav-tab:hover { background: var(--gray-800); color: var(--white); }
+.nav-tab:hover { background: var(--gray-800); color: var(--orange); }
 .nav-tab.active { background: var(--orange); color: var(--black); }
 
 .nav-tab .wip-badge {
