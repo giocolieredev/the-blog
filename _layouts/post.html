@@ -1,12 +1,17 @@
 ---
 layout: default
 ---
+<div class="reading-progress" id="reading-progress" aria-hidden="true"></div>
 <main class="wrap">
   <article class="post">
     <header class="post-header">
       <h1 class="post-title">{{ page.title }}</h1>
       <div class="post-meta">
         <time datetime="{{ page.date | date: '%Y-%m-%d' }}">{{ page.date | date: '%B %-d, %Y' }}</time>
+        {% assign words = content | strip_html | number_of_words %}
+        {% assign mins = words | divided_by: 200.0 | ceil %}
+        {% if mins < 1 %}{% assign mins = 1 %}{% endif %}
+        <span class="post-stats" title="{{ words }} words"><i class="fa-solid fa-clock"></i> {{ mins }} min read · <i class="fa-solid fa-file-lines"></i> {{ words }} words</span>
         {% if page.tags %}
         <span class="post-tags">
           {% for tag in page.tags %}<span class="tag">{{ tag }}</span>{% endfor %}
@@ -63,5 +68,22 @@ layout: default
       box.hidden = !show;
       btn.setAttribute('aria-expanded', show ? 'true' : 'false');
     });
+  })();
+
+  /* Reading progress bar — fills as you read through the article */
+  (function () {
+    var bar = document.getElementById('reading-progress');
+    var article = document.querySelector('article.post');
+    if (!bar || !article) return;
+    function update() {
+      var rect = article.getBoundingClientRect();
+      var total = rect.height - window.innerHeight;
+      var scrolled = Math.min(Math.max(-rect.top, 0), Math.max(total, 0));
+      bar.style.width = (total > 0 ? (scrolled / total) * 100 : 100) + '%';
+    }
+    window.addEventListener('scroll', update, { passive: true });
+    window.addEventListener('resize', update);
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(update);
+    update();
   })();
 </script>

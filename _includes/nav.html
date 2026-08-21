@@ -19,7 +19,33 @@
     <a href="https://crii.me/#games" class="nav-tab">GAMES <span class="wip-badge">WIP</span></a>
     <a href="https://crii.me/discord.html" class="nav-tab">DISCORD</a>
   </div>
+  <button class="burger-btn" id="burger-btn" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="mobile-drawer" onclick="toggleDrawer()">
+    <i class="fa-solid fa-bars"></i>
+  </button>
 </nav>
+
+<!-- Mobile side drawer menu -->
+<div class="mobile-drawer" id="mobile-drawer" aria-hidden="true">
+  <div class="drawer-overlay" onclick="toggleDrawer()"></div>
+  <div class="drawer-content">
+    <div class="drawer-header">
+      <span class="drawer-title">MENU</span>
+      <button class="drawer-close" onclick="toggleDrawer()" aria-label="Close menu">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+    </div>
+    <div class="drawer-links">
+      <a href="https://crii.me/" class="drawer-tab">HOME</a>
+      <a href="https://crii.me/about.html" class="drawer-tab">ABOUT</a>
+      <a href="https://crii.me/#projects" class="drawer-tab">PROJECTS</a>
+      <a href="{{ '/' | relative_url }}" class="drawer-tab active">BLOG</a>
+      <a href="https://crii.me/#music" class="drawer-tab">MUSIC <span class="wip-badge">WIP</span></a>
+      <a href="https://crii.me/#art" class="drawer-tab">ART <span class="wip-badge">WIP</span></a>
+      <a href="https://crii.me/#games" class="drawer-tab">GAMES <span class="wip-badge">WIP</span></a>
+      <a href="https://crii.me/discord.html" class="drawer-tab">DISCORD</a>
+    </div>
+  </div>
+</div>
 
 <script>
   /* Marquee ticker — same items and icons as crii.me */
@@ -34,5 +60,39 @@
     }
     var inner = document.getElementById('marquee-inner');
     if (inner) inner.innerHTML = html + html; // double for seamless loop
+  })();
+
+  /* Mobile drawer */
+  function toggleDrawer() {
+    var drawer = document.getElementById('mobile-drawer');
+    var burger = document.getElementById('burger-btn');
+    if (!drawer) return;
+    var isOpen = drawer.classList.contains('open');
+    if (isOpen) {
+      drawer.classList.remove('open');
+      drawer.setAttribute('aria-hidden', 'true');
+    } else {
+      drawer.classList.add('open');
+      drawer.setAttribute('aria-hidden', 'false');
+    }
+    if (burger) burger.setAttribute('aria-expanded', isOpen ? 'false' : 'true');
+  }
+
+  /* Responsive nav: collapse into the burger exactly when the tabs no longer fit */
+  (function () {
+    function updateNavCollapse() {
+      var nav = document.querySelector('.site-nav');
+      var tabs = document.querySelector('.nav-tabs');
+      if (!nav || !tabs) return;
+      /* Measure with the tabs shown, then collapse if they overflow */
+      document.documentElement.classList.remove('nav-collapsed');
+      var overflow = nav.scrollWidth > nav.clientWidth + 1;
+      document.documentElement.classList.toggle('nav-collapsed', overflow);
+    }
+    window.addEventListener('resize', updateNavCollapse);
+    window.addEventListener('orientationchange', updateNavCollapse);
+    window.addEventListener('load', updateNavCollapse);
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(updateNavCollapse);
+    updateNavCollapse();
   })();
 </script>
